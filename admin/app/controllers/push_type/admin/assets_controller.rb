@@ -57,7 +57,14 @@ module PushType
     end
 
     def download
-      send_file(@asset.file.url, filename: @asset.file_name, type: @asset.mime_type)
+      remote_path = Dragonfly.app.remote_url_for(@asset.file_uid)
+      if File.readable?(remote_path)
+        path = remote_path
+      else
+        path = "#{Rails.root}/public#{remote_path}"
+      end
+
+      send_file(path, filename: @asset.file_name, type: @asset.mime_type)
     end
 
     def edit
