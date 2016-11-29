@@ -13,7 +13,7 @@ module PushType
       config.assets.precompile += %w(
         push_type/admin.css
         push_type/admin.js
-        push_type/admin_assets.css 
+        push_type/admin_assets.css
         push_type/admin_assets.js
       )
 
@@ -33,6 +33,10 @@ module PushType
           item :users do
             link    { push_type_admin.users_path }
             active  { request.fullpath.match %r{^#{ push_type_admin.users_path }} }
+          end
+          item :inquiries do
+            link    { "/admin/inquiries" }
+            active  { request.fullpath.match %r{inquiries} }
           end
         end
 

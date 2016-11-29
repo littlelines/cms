@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PushType :: <%= yield :title %></title>
+  <title>Admin :: <%= yield :title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= javascript_include_tag 'vendor/modernizr' %>
   <%= javascript_include_tag 'push_type/admin', 'push_type/admin_assets' %>
@@ -12,12 +12,12 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 </head>
 <body>
-  
+
   <header class="header contain-to-grid" role="banner">
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to image_tag('push_type/pushtype-logo.svg', size: '140x26', alt: 'PushType', class: 'logo'), push_type_admin.root_path %></h1>
+          <h1><%= link_to image_tag(PushType.config.admin_logo, size: '140x26', alt: 'PushType', class: 'logo'), push_type_admin.root_path %></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>

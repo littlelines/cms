@@ -10,6 +10,10 @@ PushType.setup do |config|
   # This setting can be overridden in config/routes.rb.
   config.home_slug = 'home'
 
+  # Set the path of the logo that the admin layout will display within
+  # the PushType adin. This setting defaults to the push_type logo.
+  config.admin_logo = "push_type/push_type_logo.svg"
+
   # Set an array of node type symbols which will not be exposed to
   # the `NodesFrontEndContoller`. These nodes will not be accessible
   # through their permalink.
@@ -35,7 +39,7 @@ PushType.setup do |config|
     root_path:    Rails.root.join('public/system/dragonfly', Rails.env),
     server_root:  Rails.root.join('public')
   }
-  
+
   # For S3 storage, remember to add to Gemfile:
   # gem 'dragonfly-s3_data_store'
   # config.dragonfly_datastore = :s3

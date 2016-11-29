@@ -1,0 +1,18 @@
+- title 'Inquiries'
+
+.large-8.columns
+  - if @inquiries.empty?
+    .empty-default
+      %h2 No inquiries
+  - else
+    %section
+      %ul.user-list
+        - for inquiry in @inquiries
+          %li= render 'inquiry', inquiry: inquiry
+
+.large-4.columns
+  .side-panel{ :'side-panel' => true }
+    .padded
+      .pagination-centered
+        .pagination-stats #{ pluralize @inquiries.total_count, 'inquiry' } - Page #{ @inquiries.current_page } of #{ @inquiries.total_pages }
+        = paginate @inquiries

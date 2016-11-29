@@ -1,10 +1,7 @@
 module PushType
-  class User < ActiveRecord::Base
+  class Inquiry < ActiveRecord::Base
 
     include PushType::Customizable
-
-    validates :name, presence: true
-    validates :email, presence: true, uniqueness: true
 
     default_scope { order(:name) }
 
@@ -14,6 +11,11 @@ module PushType
       chunks.map { |n| n[0] }.join.upcase
     end
 
+
+    def gravatar_url(size = 200)
+      gravatar = Digest::MD5::hexdigest(email).downcase
+      url = "http://gravatar.com/avatar/#{gravatar}.png?s=#{size}"
+    end
 
   end
 end

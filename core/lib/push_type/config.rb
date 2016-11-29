@@ -6,13 +6,17 @@ module PushType
   #
   module Config
 
-    # Node types that can be created at the content tree root 
+    # Node types that can be created at the content tree root
     mattr_accessor :root_nodes
     @@root_nodes = :all
 
     # Slug of the node used for the site's 'home'
     mattr_accessor :home_slug
     @@home_slug = 'home'
+
+    # Logo for the admin header
+    mattr_accessor :admin_logo
+    @@admin_logo = "push_type/pushtype-logo.svg"
 
     # Node types that are not exposed to the front end
     mattr_accessor :unexposed_nodes

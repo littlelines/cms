@@ -29,16 +29,16 @@ module PushType
 
     def permalink
       @permalink ||= self_and_ancestors.map(&:slug).reverse.join('/')
-    end    
+    end
 
     def orphan?
       parent && parent.trashed?
     end
 
-    def trash!  
+    def trash!
       super
       self.descendants.update_all deleted_at: Time.zone.now
     end
-    
+
   end
 end

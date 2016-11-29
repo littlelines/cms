@@ -49,6 +49,9 @@
 
 .top-bar {
   .logo {
+    max-height: 3.6875rem;
+    width: auto;
+    padding: 5px;
     margin-top:         -3px;
   }
   .active a {
@@ -130,7 +133,7 @@ table {
       width:            rem-calc(40);
       line-height:      rem-calc(40);
       text-align:       center;
-      
+
       a {
         @extend %block-link-bg;
       }
@@ -817,7 +820,7 @@ form .asset-upload {
   .button {
     margin-top:         0;
     margin-bottom:      0;
-  } 
+  }
 }
 
 .repeater-field {

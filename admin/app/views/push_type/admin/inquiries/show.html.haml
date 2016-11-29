@@ -1,0 +1,40 @@
+.large-8.columns
+  .container
+    .head
+      .left.btn= link_to ficon(:previous), push_type_admin.inquiries_path
+      .title= yield :title
+    .body.padded
+      .row.headline
+        .columns
+          %h4 Inquiry Data
+        %hr
+      .row.title
+        .columns
+          %strong Name:
+          %p= @inquiry.name
+      .row.email
+        .columns
+          %strong E-Mail:
+          %p= @inquiry.email
+
+      .row.custom-fields
+        - @inquiry.fields.each do |key, field|
+          - if field.value
+            .columns
+              %strong #{field.name.capitalize}:
+              - if field.name.to_s.include?("file")
+                %p
+                  = link_to push_type_admin.asset_path(id: field.value) do
+                    = image_tag PushType::Asset.find(field.value).file.thumb('300x200#').url
+              - else
+                %p= field.value
+
+.large-4.columns
+  .side-panel{ :'side-panel' => true }
+    .padded
+      .reveived
+        %strong Sent:
+        = @inquiry.created_at
+      .source
+        %strong Source:
+        = @inquiry.type.titleize

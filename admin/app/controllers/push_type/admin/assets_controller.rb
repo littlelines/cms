@@ -4,7 +4,12 @@ module PushType
   class Admin::AssetsController < AdminController
 
     before_action :build_asset, only: [:new, :create, :upload]
-    before_action :load_asset,  only: [:edit, :update, :destroy, :restore]
+    before_action :load_asset,  only: [:edit,
+                                       :update,
+                                       :destroy,
+                                       :restore,
+                                       :show,
+                                       :download]
 
     def index
       respond_to do |format|
@@ -16,6 +21,9 @@ module PushType
           render json: { assets: view_context.assets_array(@assets).as_json, meta: { current_page: @assets.current_page, total_pages: @assets.total_pages } }
         end
       end
+    end
+
+    def show
     end
 
     def trash
@@ -46,6 +54,10 @@ module PushType
           end
         end
       end
+    end
+
+    def download
+      send_file(@asset.file.url, filename: @asset.file_name, type: @asset.mime_type)
     end
 
     def edit

@@ -1,0 +1,16 @@
+- title 'Show media'
+
+- if @asset.trashed?
+  - breadcrumbs.add 'Trash', push_type_admin.trash_assets_path
+- breadcrumbs.add @asset.description_or_file_name, push_type_admin.edit_asset_path(@asset)
+
+%div
+  .large-8.columns
+    %section
+      = image_tag @asset.file.url
+
+  .large-4.columns
+    .side-panel{ :'side-panel' => true }
+      .padded
+      .cta.text-center
+        = link_to ficon(:download, 'Download'), push_type_admin.download_asset_path(@asset), class: 'button radius alert'

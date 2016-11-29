@@ -1,0 +1,9 @@
+%article.user-list-item
+  = link_to push_type_admin.inquiry_path(inquiry) do
+    = image_tag inquiry.gravatar_url, class: "avatar"
+    .title
+      = inquiry.name
+      %span.label.radius= inquiry.email
+    .meta
+      %span.label.secondary.radius= inquiry.type.titleize
+      %time= inquiry.created_at.strftime("%D")

@@ -23,12 +23,20 @@ module PushType
     private
 
     def initialize_fields
-      self.class.fields.keys.each do |key|
+      all_nested_fields.keys.each do |key|
         f = initialized_field(key)
         if block = f.class.init_block
           block.call(self, f)
         end
       end
+    end
+
+    def all_nested_fields
+      all_fields = self.class.fields
+      self.class.descendants.each do |klass|
+        all_fields.merge!(klass.fields)
+      end
+      all_fields
     end
 
     def initialized_field(key)
